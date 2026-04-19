@@ -1,21 +1,23 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
     const [user, setUser] = useState(null)
+    const navigate = useNavigate()
 
     useEffect(() => {
         const userData = localStorage.getItem('user')
         if (userData) {
             setUser(JSON.parse(userData))
         } else {
-            window.location.href = `/login`
+            navigate('/login')
         }
     }, [])
 
     const handleLogout = () => {
         localStorage.removeItem('token')
         localStorage.removeItem('user')
-        window.location.href = `/login`
+        navigate('/login')
     }
 
     if (!user) return <p>Loading...</p> 
@@ -23,7 +25,7 @@ function Dashboard() {
     return (
         <div className="dashboard-container">
         <div className="dashboard-header">
-        <h1>Welcome, {user.username}!</h1>
+        <h1>Welcome, {user.name}!</h1>
         <button onClick={handleLogout}>Logout</button>
         </div>
 
@@ -32,7 +34,10 @@ function Dashboard() {
         <div>
           <h2>Student Dashboard</h2>
           <p>Browse and hire tutors for your studies</p>
-        </div>
+          <button onClick={() => navigate('/browse-tutors')}>
+            Browse Tutors
+            </button>
+        </div> 
       )}
 
       {user.role === 'tutor' && (
