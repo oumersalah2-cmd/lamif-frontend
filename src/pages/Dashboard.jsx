@@ -44,6 +44,9 @@ function Dashboard() {
         <div>
           <h2>Tutor Dashboard</h2>
           <p>Manage your profile and students</p>
+          <button onClick={() => navigate('/create-profile')}>
+            Create/Update Profile
+          </button>
         </div>
       )}
     </div>

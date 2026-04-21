@@ -20,6 +20,9 @@ function Register() {
     try {
       const response = await axios.post('http://localhost:5000/api/auth/register', formData)
       setMessage(response.data.message)
+      setTimeout(() => {
+        window.location.href = '/login'
+      }, 1500)
     } catch (error) {
       setMessage(error.response.data.message)
     }
@@ -57,6 +60,7 @@ function Register() {
         <button type="submit">Register</button>
       </form>
       {message && <p>{message}</p>}
+      <p>Already have an account? <a href="/login">Login here</a></p>
     </div>
   )
 }

@@ -4,6 +4,7 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import BrowseTutors from './pages/BrowseTutors'
+import CreateProfile from './pages/CreateProfile'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/browse-tutors" element={<BrowseTutors />} />
+        <Route path="/create-profile" element={<CreateProfile />} />
       </Routes>
     </BrowserRouter>
   )
